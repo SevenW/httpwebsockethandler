@@ -40,14 +40,13 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
    
 def _ws_main():
     try:
-        #server = ThreadedHTTPServer(('', port), WebSocketsHandler)
+        #Replace WSSimpleEcho with your own subclass of HTTPWebSocketHandler
         server = ThreadedHTTPServer(('', port), WSSimpleEcho)
         server.daemon_threads = True
         server.auth = b64encode(credentials)
         if secure:
             server.auth = b64encode(credentials)
-            #ssl_version=ssl.PROTOCOL_TLSv1 avoids POODLE vulnerability
-            server.socket = ssl.wrap_socket (server.socket, certfile='./server.pem', server_side=True, ssl_version=ssl.PROTOCOL_TLSv1)
+            server.socket = ssl.wrap_socket (server.socket, certfile='./server.pem', server_side=True)
             print('started secure https server at port %d' % (port,))
         else: 
             print('started http server at port %d' % (port,))
