@@ -1,7 +1,7 @@
 # httpwebsockethandler
 Python combines HTTP and WebSocketServer with SSL support
 
-In my plugwise-2-py repositry a python3 version can be found.
+In my plugwise-2-py repository a python3 version can be found.
 ---------------------------------------------------
 
 ##command line options
